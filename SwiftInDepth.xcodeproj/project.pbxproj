@@ -14,6 +14,14 @@
 		A936F9E829BA1F4F00D335B1 /* SwiftInDepthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A936F9E729BA1F4F00D335B1 /* SwiftInDepthTests.swift */; };
 		A936F9F229BA1F4F00D335B1 /* SwiftInDepthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A936F9F129BA1F4F00D335B1 /* SwiftInDepthUITests.swift */; };
 		A936F9F429BA1F4F00D335B1 /* SwiftInDepthUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A936F9F329BA1F4F00D335B1 /* SwiftInDepthUITestsLaunchTests.swift */; };
+		A936FA0229BA1F9200D335B1 /* Sum types.swift in Sources */ = {isa = PBXBuildFile; fileRef = A936FA0129BA1F9200D335B1 /* Sum types.swift */; };
+		A936FA0429BC675900D335B1 /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A936FA0329BC675900D335B1 /* Generics.swift */; };
+		A936FA0629BDE34A00D335B1 /* Initializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A936FA0529BDE34A00D335B1 /* Initializers.swift */; };
+		A936FA1929BF15B200D335B1 /* BoardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A936FA1829BF15B200D335B1 /* BoardGame.swift */; };
+		A936FA1D29BF327900D335B1 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A936FA1C29BF327900D335B1 /* Protocols.swift */; };
+		A981143C2A063D00007B8A3C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A981143B2A063D00007B8A3C /* Enums.swift */; };
+		A9CAAC3C29D9C8F300D0234C /* Associated Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CAAC3B29D9C8F300D0234C /* Associated Types.swift */; };
+		A9CAAC3E29E18C3700D0234C /* Revision.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CAAC3D29E18C3700D0234C /* Revision.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +52,14 @@
 		A936F9ED29BA1F4F00D335B1 /* SwiftInDepthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftInDepthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A936F9F129BA1F4F00D335B1 /* SwiftInDepthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftInDepthUITests.swift; sourceTree = "<group>"; };
 		A936F9F329BA1F4F00D335B1 /* SwiftInDepthUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftInDepthUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A936FA0129BA1F9200D335B1 /* Sum types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sum types.swift"; sourceTree = "<group>"; };
+		A936FA0329BC675900D335B1 /* Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
+		A936FA0529BDE34A00D335B1 /* Initializers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initializers.swift; sourceTree = "<group>"; };
+		A936FA1829BF15B200D335B1 /* BoardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGame.swift; sourceTree = "<group>"; };
+		A936FA1C29BF327900D335B1 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		A981143B2A063D00007B8A3C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		A9CAAC3B29D9C8F300D0234C /* Associated Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Associated Types.swift"; sourceTree = "<group>"; };
+		A9CAAC3D29E18C3700D0234C /* Revision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Revision.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +110,12 @@
 		A936F9D529BA1F4E00D335B1 /* SwiftInDepth */ = {
 			isa = PBXGroup;
 			children = (
+				A936FA0029BA1F7000D335B1 /* Practise */,
 				A936F9D629BA1F4E00D335B1 /* SwiftInDepthApp.swift */,
 				A936F9D829BA1F4E00D335B1 /* ContentView.swift */,
 				A936F9DA29BA1F4F00D335B1 /* Assets.xcassets */,
 				A936F9DC29BA1F4F00D335B1 /* Preview Content */,
+				A9CAAC3D29E18C3700D0234C /* Revision.swift */,
 			);
 			path = SwiftInDepth;
 			sourceTree = "<group>";
@@ -125,6 +143,20 @@
 				A936F9F329BA1F4F00D335B1 /* SwiftInDepthUITestsLaunchTests.swift */,
 			);
 			path = SwiftInDepthUITests;
+			sourceTree = "<group>";
+		};
+		A936FA0029BA1F7000D335B1 /* Practise */ = {
+			isa = PBXGroup;
+			children = (
+				A936FA0129BA1F9200D335B1 /* Sum types.swift */,
+				A936FA0329BC675900D335B1 /* Generics.swift */,
+				A936FA0529BDE34A00D335B1 /* Initializers.swift */,
+				A936FA1829BF15B200D335B1 /* BoardGame.swift */,
+				A936FA1C29BF327900D335B1 /* Protocols.swift */,
+				A9CAAC3B29D9C8F300D0234C /* Associated Types.swift */,
+				A981143B2A063D00007B8A3C /* Enums.swift */,
+			);
+			path = Practise;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +289,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A936FA0229BA1F9200D335B1 /* Sum types.swift in Sources */,
+				A936FA0429BC675900D335B1 /* Generics.swift in Sources */,
+				A981143C2A063D00007B8A3C /* Enums.swift in Sources */,
+				A9CAAC3E29E18C3700D0234C /* Revision.swift in Sources */,
+				A936FA1D29BF327900D335B1 /* Protocols.swift in Sources */,
 				A936F9D929BA1F4E00D335B1 /* ContentView.swift in Sources */,
+				A936FA0629BDE34A00D335B1 /* Initializers.swift in Sources */,
+				A936FA1929BF15B200D335B1 /* BoardGame.swift in Sources */,
+				A9CAAC3C29D9C8F300D0234C /* Associated Types.swift in Sources */,
 				A936F9D729BA1F4E00D335B1 /* SwiftInDepthApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
