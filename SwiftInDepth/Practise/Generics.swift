@@ -98,11 +98,10 @@ enum RoyalRank: Comparable {
  as an alternative, which goes at the end of a function, as shown here.
  */
 
-func lowestOccurrences<T>(values: [T]) -> [T: Int] {
-//    where T: Comparable & Hashable
-    // ... snip
-    return [T:0]
-}
+//func lowestOccurrences<T>(values: [T]) -> [T: Int] where T: Comparable & Hashable {
+//    // ... snip
+//    return [T:0]
+//}
 
 //Creating a generic type
 

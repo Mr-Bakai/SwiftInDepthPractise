@@ -20,6 +20,7 @@
 		A936FA1929BF15B200D335B1 /* BoardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A936FA1829BF15B200D335B1 /* BoardGame.swift */; };
 		A936FA1D29BF327900D335B1 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A936FA1C29BF327900D335B1 /* Protocols.swift */; };
 		A981143C2A063D00007B8A3C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A981143B2A063D00007B8A3C /* Enums.swift */; };
+		A9C798852A5076F20080CB73 /* Optionals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C798842A5076F20080CB73 /* Optionals.swift */; };
 		A9CAAC3C29D9C8F300D0234C /* Associated Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CAAC3B29D9C8F300D0234C /* Associated Types.swift */; };
 		A9CAAC3E29E18C3700D0234C /* Revision.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CAAC3D29E18C3700D0234C /* Revision.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		A936FA1829BF15B200D335B1 /* BoardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGame.swift; sourceTree = "<group>"; };
 		A936FA1C29BF327900D335B1 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		A981143B2A063D00007B8A3C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		A9C798842A5076F20080CB73 /* Optionals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optionals.swift; sourceTree = "<group>"; };
 		A9CAAC3B29D9C8F300D0234C /* Associated Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Associated Types.swift"; sourceTree = "<group>"; };
 		A9CAAC3D29E18C3700D0234C /* Revision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Revision.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +157,7 @@
 				A936FA1C29BF327900D335B1 /* Protocols.swift */,
 				A9CAAC3B29D9C8F300D0234C /* Associated Types.swift */,
 				A981143B2A063D00007B8A3C /* Enums.swift */,
+				A9C798842A5076F20080CB73 /* Optionals.swift */,
 			);
 			path = Practise;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				A936FA0629BDE34A00D335B1 /* Initializers.swift in Sources */,
 				A936FA1929BF15B200D335B1 /* BoardGame.swift in Sources */,
 				A9CAAC3C29D9C8F300D0234C /* Associated Types.swift in Sources */,
+				A9C798852A5076F20080CB73 /* Optionals.swift in Sources */,
 				A936F9D729BA1F4E00D335B1 /* SwiftInDepthApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
