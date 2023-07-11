@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Customer {
     let id: String
@@ -360,3 +361,105 @@ private func customer4_7() {
 
 
 
+// MARK: - 4.8. Simplifying optional enums
+
+enum Membership {
+    /// 10% discount
+    case gold
+    /// 5% discount
+    case silver
+}
+
+private func customer4_8() {
+    struct Customer {
+        let id: String
+        let email: String
+        let balance: Int // amount in cents
+        let firstName: String?
+        let lastName: String?
+        let membership: Membership?
+        
+        var displayName: String? {
+            switch (firstName, lastName) {
+            case let (first?, last?): return first + " " + last
+            case let (first?, nil): return first
+            case let (nil, last?): return last
+            default: return nil
+            }
+        }
+    }
+    
+    let customer = Customer(
+        id: "123",
+        email: "some.mail",
+        balance: 300,
+        firstName: "Jake",
+        lastName: nil,
+        membership: .gold
+    )
+    
+    
+    /// When you want to read this value, a first implementation tactic could be
+    /// to unwrap the enum first and act accordingly.
+    ///
+    
+    if let membership = customer.membership {
+        switch membership {
+        case .gold: print("Gold")
+        case .silver: print("Silver")
+        }
+    } else {
+        print("Regular")
+    }
+    
+    
+    
+    
+    /// Here we are matching an ENUM!
+    /// Even better, you can take a shorter route and match on the optional enum by using the ? operator.
+    /// The ? operator indicates that you are unwrapping and reading the optional membership at the same time.
+    switch customer.membership {
+    case .gold?: print("Gold")
+    case .silver?: print("Silver")
+    default: print("Regular")
+    }
+}
+
+
+
+
+
+
+
+
+// MARK: - Good to know
+private func customer4_9() {
+    // 4.10.1. Reducing a Boolean to two states
+    
+    /// When you want to treat a nil as false, making it a regular Boolean straight away can be beneficial,
+    /// so dealing with an optional Boolean doesn’t propagate far into your code.
+    /// You can do this by using a fallback value, with help from the nil-coalescing operator- ??.
+    let preferences = ["autoLogin": true, "faceIdEnabled": true]
+    let isFaceIdEnabled = preferences["faceIdEnabled"] ?? false
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // 4.10.2. Falling back on true
+    /// Here’s a counterpoint: blindly falling back to false is not recommended.
+    /// Depending on the scenario, you may want to fall back on a true value instead.
+    
+    /// Consider a scenario where you want to see whether a customer has Face ID enabled
+    /// so that you can direct the user to a Face ID settings screen. In that case, you can fall back on true instead.
+    
+    if preferences["faceIdEnabled"] ?? true {
+        // go to Face ID settings screen.
+    } else {
+        // customer has disabled Face ID
+    }
+}
