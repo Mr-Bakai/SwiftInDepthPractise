@@ -345,7 +345,7 @@ private func customer4_7() {
     
     
     // Falling back when an optional is nil
-    /// Notice how title is a String, yet you feed it the customer.displayName optional.
+    ///  Notice how title is a String, yet you feed it the customer.displayName optional.
     ///  This means that title will either have the customer’s unwrapped name or fall back to the non-optional “customer” value.
     let title: String = customer.displayName ?? "customer"
 }
@@ -401,7 +401,6 @@ private func customer4_8() {
     
     /// When you want to read this value, a first implementation tactic could be
     /// to unwrap the enum first and act accordingly.
-    ///
     
     if let membership = customer.membership {
         switch membership {
@@ -462,4 +461,136 @@ private func customer4_9() {
     } else {
         // customer has disabled Face ID
     }
+}
+
+
+
+
+
+
+
+
+
+// MARK: - 4.10.4. Implementing RawRepresentable
+
+private func customer4_10() {
+    
+    enum UserPreference: RawRepresentable {
+        case enabled
+        case disabled
+        case notSet
+
+        init(rawValue: Bool?) {
+             switch rawValue {
+               case true?: self = .enabled
+               case false?: self = .disabled
+               default: self = .notSet
+             }
+        }
+
+        var rawValue: Bool? {
+             switch self {
+               case .enabled: return true
+               case .disabled: return false
+               case .notSet: return nil
+             }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+// MARK: - 4.11. Force unwrapping guidelines
+
+private func optional4_11() {
+    
+    
+    /// Take Foundation’s URL type, for example. It accepts a String parameter in its initializer.
+    /// Then a URL is either created or not, depending on whether the
+    /// passed string is a proper path—hence URL’s initializer can return nil.
+    let optionalUrl = URL(string: "https://www.themayonnaisedepot.com")
+    // Optional(http://www.themayonnaisedepot.com)
+    
+    
+    
+    
+    
+    
+    
+    
+    /// You can force unwrap the optional by using an exclamation mark, bypassing any safe techniques.
+    let forceUnwrappedUrl = URL(string: "https://www.themayonnaisedepot.com")!
+    // http://www.themayonnaisedepot.com. Notice how we use the ! to forceunwrap.
+    
+    
+    
+    
+    
+    
+    
+    
+    // IUO
+    /// This is a good scenario for an IUO. By making the chat service an IUO,
+    /// you don’t have to pass the chat service to the process monitor’s initializer,
+    /// but you don’t need to make chat service an optional, either.
+    
+    class ChatService {
+        var isHealthy = true
+    }
+
+    class ProcessMonitor {
+
+        var chatService: ChatService! // IUO
+     
+        class func start() -> ProcessMonitor {
+            // In a real-world application: run elaborate diagnostics.
+            return ProcessMonitor()
+        }
+
+        func status() -> String {
+            if chatService.isHealthy {
+                return "Everything is up and running"
+            } else {
+                return "Chatservice is down!"
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    /// This way you can kick off the processMonitor first, but you have
+    /// the benefit of having chatService available to processMonitor right before you need it.
+    
+    let processMonitor = ProcessMonitor.start()
+    // processMonitor runs important diagnostics here.
+    // processMonitor is ready.
+
+    let chat = ChatService() // Start Chatservice.
+
+    processMonitor.chatService = chat
+    processMonitor.status() // "Everything is up and running"
+    
+    
+    
+    
+    
+    
+    
+    
+    /// But chatService is an IUO, and IUOs can be dangerous.
+    /// If you for some reason accessed the chatService property
+    /// before it passed to processMonitor, you’d end up with a crash.
+
+    let processMonitorB = ProcessMonitor.start()
+    processMonitor.status() // fatal error: unexpectedly found nil
 }
