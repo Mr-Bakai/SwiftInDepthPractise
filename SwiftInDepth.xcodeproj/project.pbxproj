@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A5141662ADE89BD00247181 /* SwiftPatterns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5141652ADE89BD00247181 /* SwiftPatterns.swift */; };
 		A936F9D729BA1F4E00D335B1 /* SwiftInDepthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A936F9D629BA1F4E00D335B1 /* SwiftInDepthApp.swift */; };
 		A936F9D929BA1F4E00D335B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A936F9D829BA1F4E00D335B1 /* ContentView.swift */; };
 		A936F9DB29BA1F4F00D335B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A936F9DA29BA1F4F00D335B1 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A5141652ADE89BD00247181 /* SwiftPatterns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPatterns.swift; sourceTree = "<group>"; };
 		A936F9D329BA1F4E00D335B1 /* SwiftInDepth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftInDepth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A936F9D629BA1F4E00D335B1 /* SwiftInDepthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftInDepthApp.swift; sourceTree = "<group>"; };
 		A936F9D829BA1F4E00D335B1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				A981143B2A063D00007B8A3C /* Enums.swift */,
 				A9C798842A5076F20080CB73 /* Optionals.swift */,
 				A9AD81702A61B66000E845F4 /* ErrorHandling.swift */,
+				6A5141652ADE89BD00247181 /* SwiftPatterns.swift */,
 			);
 			path = Practise;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				A9CAAC3E29E18C3700D0234C /* Revision.swift in Sources */,
 				A936FA1D29BF327900D335B1 /* Protocols.swift in Sources */,
 				A936F9D929BA1F4E00D335B1 /* ContentView.swift in Sources */,
+				6A5141662ADE89BD00247181 /* SwiftPatterns.swift in Sources */,
 				A936FA0629BDE34A00D335B1 /* Initializers.swift in Sources */,
 				A936FA1929BF15B200D335B1 /* BoardGame.swift in Sources */,
 				A9CAAC3C29D9C8F300D0234C /* Associated Types.swift in Sources */,

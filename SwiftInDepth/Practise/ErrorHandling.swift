@@ -116,9 +116,8 @@ private func pareseLocation(_ latitude: String, _ longtitude: String) throws -> 
 
 private func error6_3() {
     
-    
-    /// Because parseLocation is a throwing function, as indicated by the throws keyword,
-    /// you need to call it with the try keyword.
+    /// Because parseLocation is a throwing function, as indicated by the `throws` keyword,
+    /// you need to call it with the `try` keyword.
     do {
         try pareseLocation("I am not a double, you dick head", "4.123123123")
     } catch {
@@ -136,6 +135,8 @@ private func error6_3() {
 /// and you have no way of knowing this by looking at a function signature.
 /// Not having to list and handle each error explicitly gives you flexibility,
 /// but a significant shortcoming is that you can’t quickly know which errors a function can produce or propagate.
+///
+/// Functions don’t reveal their errors, so giving some information where possible is recommended.
 
 
 
