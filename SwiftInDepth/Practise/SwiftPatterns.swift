@@ -435,3 +435,324 @@ private func foo6() {
 // MARK: - 13.2.5. Conditional conformance on your types
 
 
+final class CachedValue<T> {
+    private let load: () -> T
+    private var lastLoaded: Date
+
+    private var timeToLive: Double
+    private var currentValue: T
+
+    public var value: T {
+        let needsRefresh = abs(lastLoaded.timeIntervalSinceNow) > timeToLive
+        if needsRefresh {
+            currentValue = load()
+            lastLoaded = Date()
+        }
+        return currentValue
+    }
+
+    init(timeToLive: Double, load: @escaping (() -> T)) {
+        self.timeToLive = timeToLive
+        self.load = load
+        self.currentValue = load()
+        self.lastLoaded = Date()
+    }
+}
+
+
+
+
+private func foo7() {
+    let simplecache = CachedValue(timeToLive: 2, load: { () -> String in
+        print("I am being refreshed!")
+        return "I am the value inside CachedValue"
+    })
+    
+    // Prints: "I am being refreshed!"
+    simplecache.value // "I am the value inside CachedValue"
+    simplecache.value // "I am the value inside CachedValue"
+    
+    sleep(3) // wait 3 seconds
+    
+    // Prints: "I am being refreshed!"
+    simplecache.value // "I am the value inside CachedValue"
+    
+    
+}
+
+
+
+
+
+///MAKING YOUR TYPE CONDITIONALLY CONFORMANT
+///Here comes the fun part. 
+///Now that you have a generic type, you can get in your starting positions and start adding conditional conformance.
+///This way, CachedValue reflects the capabilities of its value inside. 
+///For instance, you can make CachedValue Equatable if its value inside is Equatable.
+///You can make CachedValue Hashable if its value inside is Hashable, 
+///and you can make CachedValue Comparable if its value inside is Comparable
+
+
+// Conforming to Equatable
+extension CachedValue: Equatable where T: Equatable {
+    static func == (lhs: CachedValue, rhs: CachedValue) -> Bool {
+        return lhs.value == rhs.value
+    }
+}
+
+// Conforming to Hashable
+extension CachedValue: Hashable where T: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(value)
+    }
+}
+
+// Conforming to Comparable
+extension CachedValue: Comparable where T: Comparable {
+    static func <(lhs: CachedValue, rhs: CachedValue) -> Bool {
+        return lhs.value < rhs.value
+    }
+    static func ==(lhs: CachedValue, rhs: CachedValue) -> Bool {
+        return lhs.value == rhs.value
+    }
+}
+
+
+
+
+
+
+
+/// Now with conditional conformance in place,
+/// CachedValue takes on the properties of its inner type.
+/// Let’s try it out and see if CachedValue is properly Equatable, Hashable, and Comparable.
+private func foo8() {
+    
+    let cachedValueOne = CachedValue(timeToLive: 60) {
+        // Perform expensive operation
+        // E.g. Calculate the purpose of life
+        return 42
+    }
+
+    let cachedValueTwo = CachedValue(timeToLive: 120) {
+        // Perform another expensive operation
+        return 1000
+    }
+
+    cachedValueOne == cachedValueTwo // Equatable: You can check for equality.
+    cachedValueOne > cachedValueTwo // Comparable: You can compare two cached values.
+
+    let set = Set(arrayLiteral: cachedValueOne, cachedValueTwo) // Hashable: You can store CachedValue in a set
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // MARK: - 13.3. Dealing with protocol shortcomings
+    /// TO BE REPEATED!!!
+
+    protocol PokerGame: Hashable {
+        func start()
+    }
+
+    struct StudPoker: PokerGame {
+        func start() {
+            print("Starting StudPoker")
+        }
+    }
+    struct TexasHoldem: PokerGame {
+        func start() {
+            print("Starting Texas Holdem")
+        }
+    }
+
+
+
+    
+    
+    
+    // This won't work!
+    var numberOfPlayers = [PokerGame: Int]()
+    
+    // The error that the Swift compiler throws is:
+    //error: using 'PokerGame' as a concrete type conforming to protocol 'Hashable' is not supported
+    var numberOfPlayers = [PokerGame: Int]()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // MARK: - 13.3.2. Type erasing a protocol
+    
+    
+    struct AnyPokerGame: PokerGame {
+     
+        init<Game: PokerGame>(_ pokerGame: Game)  {
+             _start = pokerGame.start
+        }
+
+        private let _start: () -> Void
+     
+        func start() {
+            _start()
+        }
+    }
+    
+    
+    
+    
+    let studPoker = StudPoker()
+    let holdEm = TexasHoldem()
+
+    // You can mix multiple poker games inside an array.
+    let games: [AnyPokerGame] = [
+        AnyPokerGame(studPoker),
+        AnyPokerGame(holdEm)
+    ]
+
+    games.forEach { (pokerGame: AnyPokerGame) in
+        pokerGame.start()
+    }
+
+    // You can store them inside a Set, too
+    let setOfGames: Set<AnyPokerGame> = [
+        AnyPokerGame(studPoker),
+        AnyPokerGame(holdEm)
+    ]
+
+    // You can even use poker games as keys!
+    var numberOfPlayers = [
+        AnyPokerGame(studPoker): 300,
+        AnyPokerGame(holdEm): 400
+    ]
+    
+    let studPoker = StudPoker()
+    let holdEm = TexasHoldem()
+
+    // You can mix multiple poker games inside an array.
+    let games: [AnyPokerGame] = [
+        AnyPokerGame(studPoker),
+        AnyPokerGame(holdEm)
+    ]
+
+    games.forEach { (pokerGame: AnyPokerGame) in
+        pokerGame.start()
+    }
+
+    // You can store them inside a Set, too
+    let setOfGames: Set<AnyPokerGame> = [
+        AnyPokerGame(studPoker),
+        AnyPokerGame(holdEm)
+    ]
+
+    // You can even use poker games as keys!
+    var numberOfPlayers = [
+        AnyPokerGame(studPoker): 300,
+        AnyPokerGame(holdEm): 400
+    ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/// You’re almost done. Because PokerGame is also Hashable, you need to make AnyPokerGame adhere to Hashable.
+/// In this case, Swift can’t synthesize the Hashable implementation for you because you’re storing a closure.
+/// Like a class, a closure is a reference type, which Swift won’t synthesize; so you have to implement Hashable yourself.
+/// Luckily, Swift offers the AnyHashable type, which is a type-erased Hashable type.
+/// You can store the poker game inside AnyHashable and forward the Hashable methods to the AnyHashable type.
+struct AnyPokerGame: PokerGame {
+
+    private let _start: () -> Void
+    private let _hashable: AnyHashable
+ 
+    init<Game: PokerGame>(_ pokerGame: Game)  {
+        _start = pokerGame.start
+        _hashable = AnyHashable(pokerGame)
+    }
+
+    func start() {
+        _start()
+    }
+}
+
+
+
+
+
+
+
+/// Congratulations, you’ve erased a type!
+/// AnyPokerGame wraps any PokerGame type, and now you’re now free to use AnyPokerGame inside collections.
+/// With this technique, you can use protocols with Self requirements—or associated types—and work with them at runtime!
+extension AnyPokerGame: Hashable {
+ 
+    func hash(into hasher: inout Hasher) {
+        _hashable.hash(into: &hasher)
+     }
+
+    static func ==(lhs: AnyPokerGame, rhs: AnyPokerGame) -> Bool {
+        return lhs._hashable == rhs._hashable
+     }
+}
+
+
+
+
