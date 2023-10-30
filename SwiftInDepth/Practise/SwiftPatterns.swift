@@ -756,3 +756,117 @@ extension AnyPokerGame: Hashable {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// MARK: - 13.4. An alternative to protocols
+
+private func foo8() {
+    
+    protocol Validator {
+        associatedtype Value
+        func validate(_ value: Value) -> Bool
+    }
+    
+    
+    
+    struct MinimalCountValidator: Validator {
+        let minimalChars: Int
+        
+        func validate(_ value: String) -> Bool {
+            guard minimalChars > 0 else { return true }
+            guard !value.isEmpty else { return false } // isEmpty is faster than count check
+            return value.count >= minimalChars
+        }
+    }
+    
+    
+    ///Now, for each different implementation,
+    ///you have to introduce a new type conforming to Validator type,
+    ///which is a fine approach but requires more boilerplate.
+    ///Let’s consider an alternative to prove that you don’t always need protocols.
+    
+    let validator = MinimalCountValidator(minimalChars: 5)
+    validator.validate("1234567890") // true
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    struct Validator<T> {
+
+        let validate: (T) -> Bool
+
+        init(validate: @escaping (T) -> Bool) {
+            self.validate = validate
+        }
+    }
+
+    let notEmpty = Validator<String>(validate: { string -> Bool in
+        return !string.isEmpty
+    })
+    
+    notEmpty.validate("") // false
+    notEmpty.validate("Still reading this book huh? That's cool!") // true
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+extension Validator {
+   func combine(_ other: Validator<T>) -> Validator<T> {
+        let combinedValidator = Validator<T>(validate: { (value: T) -> Bool in
+            let ownResult = self.validate(value)
+            let otherResult = other.validate(value)
+            return ownResult && otherResult
+        })
+
+       return combinedValidator
+    }
+}
+
+let notEmpty = Validator<String>(validate: { string -> Bool in
+   return !string.isEmpty
+})
+
+let maxTenChars = Validator<String>(validate: { string -> Bool in
+    return string.count <= 10
+})
+
+
+
+
+private func foo9(){
+    let combinedValidator: Validator<String> = notEmpty.combine(maxTenChars)
+    combinedValidator.validate("") // false
+    combinedValidator.validate("Hi") // true
+    combinedValidator.validate("This one is way too long") // false
+}
