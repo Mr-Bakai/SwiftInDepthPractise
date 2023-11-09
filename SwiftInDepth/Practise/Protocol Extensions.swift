@@ -510,3 +510,67 @@ extension Collection where Element: Hashable { /// You extend Collection only fo
         return uniqueValues
     }
 }
+
+
+
+
+
+
+
+
+// MARK: - 12.6. Extending with concrete constraints
+
+
+
+/// You can also constrain associated types to a concrete type instead of constraining to a protocol. 
+/// As an example, let’s say you have an `Article` struct with a `viewCount` property,
+/// which tracks the number of times that people viewed an `Article`.
+
+
+struct Article: Hashable {
+    let viewCount: Int
+}
+
+
+
+
+/// You can extend `Collection` to get the total number of view counts inside a `collection`.
+/// But this time you constrain an `Element` to `Article`, as shown in the following.
+/// Since you’re constraining to a concrete type, you can use the `==` operator.
+
+
+// Not like this
+extension Collection where Element: Article { /* snip...*/ }
+
+// But like this
+extension Collection where Element == Article {
+    var totalViewCount: Int {
+        var count = 0
+        for article in self {
+            count += article.viewCount
+        }
+        return count
+    }
+}
+
+
+
+
+
+
+/// With this constraint in place,
+/// you can get the total view count whenever you have a collection with articles in it,
+/// whether that’s an Array, a Set, or something else altogether.
+
+private func foo1() {
+    let articleOne = Article(viewCount: 30)
+    let articleTwo = Article(viewCount: 200)
+
+    // Getting the total count on an Array.
+    let articlesArray = [articleOne, articleTwo]
+    articlesArray.totalViewCount // 230
+
+    // Getting the total count on a Set.
+    let articlesSet: Set<Article> = [articleOne, articleTwo]
+    articlesSet.totalViewCount // 230
+}
