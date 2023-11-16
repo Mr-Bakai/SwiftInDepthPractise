@@ -5,6 +5,7 @@
 //  Created by Bakai Ismaiilov on 31/10/23.
 //
 
+/*
 import Foundation
 
 // MARK: - 12.1.2. Creating a protocol extension
@@ -574,3 +575,4 @@ private func foo1() {
     let articlesSet: Set<Article> = [articleOne, articleTwo]
     articlesSet.totalViewCount // 230
 }
+*/

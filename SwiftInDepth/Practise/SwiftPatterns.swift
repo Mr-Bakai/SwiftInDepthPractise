@@ -5,6 +5,7 @@
 //  Created by Bakai Ismaiilov on 17/10/23.
 //
 
+/*
 import Foundation
 import XCTest
 
@@ -870,3 +871,4 @@ private func foo9(){
     combinedValidator.validate("Hi") // true
     combinedValidator.validate("This one is way too long") // false
 }
+*/
