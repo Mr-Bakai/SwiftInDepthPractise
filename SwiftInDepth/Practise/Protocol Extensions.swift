@@ -161,7 +161,7 @@ extension ValidatingMailer {
 
 
 
-/// Now, SMTPClient implements ValidatingMailer and automatically get’s a validated send(email:) method.
+/// Now, SMTPClient implements `ValidatingMailer` and automatically get’s a `validated send(email:)` method.
 struct SMTPClient: ValidatingMailer {
     // Implementation omitted.
 }
