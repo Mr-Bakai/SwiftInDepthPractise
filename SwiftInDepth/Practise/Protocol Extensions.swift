@@ -89,8 +89,8 @@ class BikeAPI: RequestBuilder, ResponseHandler {
 // MARK: - 12.2. Protocol inheritance vs. Protocol composition
 // 12.2.1. Builder a mailer
 
-/// A MailAddress shows more intent than simply using a String.
-/// You also define the Mailer protocol with a default implementation
+/// A `MailAddress` shows more intent than simply using a String.
+/// You also define the `Mailer` protocol with a default implementation
 /// via a protocol extension (implementation omitted).
 struct MailAddress {
      let value: String
@@ -108,7 +108,7 @@ protocol Mailer {
  }
 
 
-/// Not all mailers validate, so you can’t assume that Mailer validates an email by default.
+/// Not all mailers validate, so you can’t assume that `Mailer` validates an email by default.
 extension Mailer {
     func send(email: Email) {
         // Omitted: Connect to server
