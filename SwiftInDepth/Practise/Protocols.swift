@@ -160,6 +160,6 @@ func justToShow() {
     }
     
     retrievePriceCompileTime(coin: btc) { (updatedCoin: Bitcoin) in
-    print("Updated value compile time is \(updatedCoin.price?.doubleValue ?? 0)")
+        print("Updated value compile time is \(updatedCoin.price?.doubleValue ?? 0)")
     }
 }

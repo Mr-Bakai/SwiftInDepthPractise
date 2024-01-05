@@ -5,13 +5,13 @@
 //  Created by Bakai Ismaiilov on 31/10/23.
 //
 
-/*
 import Foundation
+import UIKit
 
 // MARK: - 12.1.2. Creating a protocol extension
 
 protocol RequestBuilder {
-    var baseUrl: URL { get }
+    var baseUrl: URL { get set }
     func makeRequest(path: String) -> URLRequest
 }
 
@@ -28,15 +28,15 @@ extension RequestBuilder {
 
 
 
-private func foo() {
+private func foo1() {
     
-    /// To get the implementation of makeRequest for free,
-    /// you merely have to conform to the RequestBuilder protocol.
+    /// To get the implementation of `makeRequest` for free,
+    /// you merely have to conform to the `RequestBuilder` protocol.
     struct BikeRequestBuilder: RequestBuilder {
-        let baseURL: URL = URL(string: "https://www.biketriptracker.com")!
+        var baseUrl: URL
     }
     
-    let bikeRequestBuilder = BikeRequestBuilder()
+    let bikeRequestBuilder = BikeRequestBuilder(baseUrl: URL(string: "https://www.biketriptracker.com")!)
     let request = bikeRequestBuilder.makeRequest(path: "/trips/all")
     print(request) // https://www.biketriptracker.com/trips/all
 }
@@ -164,7 +164,7 @@ struct SMTPClient: ValidatingMailer {
 /// `A downside of protocol inheritance is that you don’t separate functionality and semantics.`
 /// For instance, because of protocol inheritance, anything that validates emails automatically has to be a `Mailer`
 /// You can loosen this restriction by applying protocol composition—let’s do that now.
-private func foo1() {
+private func foo3() {
     let client = SMTPClient()
     try? client.send(email: Email(subject: "Learn Swift",
                                   body: "Lorem ipsum",
@@ -264,7 +264,7 @@ extension MailValidator where Self: Mailer {
 struct SMTPClient: Mailer, MailValidator {}
 
 
-private func foo3() {
+private func foo5() {
     let client = SMTPClient()
     let email = Email(subject: "Learn Swift",
                       body: "Lorem ipsum",
@@ -563,7 +563,7 @@ extension Collection where Element == Article {
 /// you can get the total view count whenever you have a collection with articles in it,
 /// whether that’s an Array, a Set, or something else altogether.
 
-private func foo1() {
+private func fooooo() {
     let articleOne = Article(viewCount: 30)
     let articleTwo = Article(viewCount: 200)
 
@@ -575,4 +575,3 @@ private func foo1() {
     let articlesSet: Set<Article> = [articleOne, articleTwo]
     articlesSet.totalViewCount // 230
 }
-*/

@@ -221,3 +221,82 @@ struct Bag<Element: Hashable> {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/// To help peek inside the bag, implement `CustomStringConvertible`
+/// Whenever you print your bag, the `description` property supplies a custom
+/// string of the elements inside and their occurrences, as shown in this listing.
+
+extension Bag: CustomStringConvertible {
+    var description: String {
+        var summary = String()
+        for (key, value) in store {
+            let times = value == 1 ? "time" : "times"
+            summary.append("\(key) occurs \(value) \(times)\n")
+        }
+        return summary
+    }
+}
+
+
+
+
+
+
+
+
+private func foo4() {
+//    let anotherBag: Bag = [1.0, 2.0, 2.0, 3.0, 3.0, 3.0]
+//    print(ads)
+    // Output:
+    // 2.0 occurs 2 times
+    // 1.0 occurs 1 time
+    // 3.0 occurs 3 times
+}
+
+
+
+
+struct BagIterator<Element: Hashable>: IteratorProtocol {
+    
+    var store = [Element: Int]()
+    
+    mutating func next() -> Element? {
+         guard let (key, value) = store.first else {
+             return nil
+         }
+         if value > 1 {
+             store[key]? -= 1
+         } else {
+             store[key] = nil
+         }
+         return key
+     }
+}
+
+
+extension Bag: Sequence {
+    func filter(_ isIncluded: (Element) throws -> Bool) rethrows -> [Element] {
+        <#code#>
+    }
+    
+    func forEach(_ body: (Element) throws -> Void) rethrows {
+        
+    }
+    
+    func makeIterator() -> BagIterator<Element> {
+        return BagIterator(store: store)
+    }
+}
