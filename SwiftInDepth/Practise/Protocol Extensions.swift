@@ -212,8 +212,8 @@ extension MailValidator {
 
 
 /// Now you can compose.
-/// You make SMTPClient conform to both separate protocols.
-/// Mailer does not know about MailValidator, and vice versa
+/// You make `SMTPClient` conform to both separate protocols.
+/// Mailer does not know about `MailValidator`, and vice versa
 
 /// With the two protocols in place,
 /// you can create an extension that only works on a protocol intersection.
@@ -235,7 +235,7 @@ extension MailValidator where Self: Mailer {
 
 
 
-/// Another benefit of this approach is that you can come up with new methods such as send(email:, at:)
+/// Another benefit of this approach is that you can come up with new methods such as `send(email:, at:)`
 /// You can define new methods on a protocol intersection.
 extension MailValidator where Self: Mailer {
     // ... snip
@@ -267,15 +267,15 @@ extension MailValidator where Self: Mailer {
 /// which unlocks the code inside the protocol intersection.
 /// In other words, `SMTPClient` gets the validating `send(email:)` and `send(email:, at:)` methods for free.
 
-struct SMTPClient: Mailer, MailValidator {}
+struct SMTPClient2: Mailer, MailValidator {}
 
 
 private func foo5() {
-    let client = SMTPClient()
+    let client = SMTPClient2()
     let email = Email(subject: "Learn Swift",
                       body: "Lorem ipsum",
-                      to: [MailAdress(value: "john@appleseed.com")],
-                      from: MailAdress(value: "stranger@somewhere.com"))
+                      to: [MailAddress(value: "john@appleseed.com")],
+                      from: MailAddress(value: "stranger@somewhere.com"))
     
     try? client.send(email: email) // Email validated and sent.
     try? client.send(email: email, at: Date(timeIntervalSinceNow: 3600)) // Email validated and queued.
@@ -291,34 +291,46 @@ private func foo5() {
     
     /// Another way to see the benefits is via a generic function.
     /// When you constrain to both protocols, the intersection implementation becomes available.
-    /// Notice how you define the generic T and constrain it to both protocols.
-    /// By doing so, the delayed send(email:, at:) method becomes available.
+    /// Notice how you define the generic `T` and constrain it to both protocols.
+    /// By doing so, the delayed `send(email:, at:)` method becomes available.
     
     func submitEmail<T>(sender: T, email: Email) where T: Mailer, T: MailValidator {
         try? sender.send(email: email, at: Date(timeIntervalSinceNow: 3600))
     }
-    
-    
-    
-    
-    
-    protocol Mentos {
-        func fixAllBugs()
+}
+
+
+
+
+
+
+// MARK: - 12.2.5. Exercise ✅
+
+protocol Mentos {
+    func fixAllBugs()
+}
+
+protocol Coke {
+    func fixHelper()
+}
+
+extension Mentos where Self: Coke {
+    func explode() {
+        print("This is a bad idea to mix them up")
     }
-    
-    protocol Coke {
-        func fixHelper()
-    }
-    
-    func mix<T>(concoction: T) where T: Mentos, T: Coke {
-        // concoction.explode()  // make this work, but only if T conforms to both protocols, not just one
-    }
-    
-    
-    
-    
-    
-    
+}
+
+func mix<T>(concoction: T) where T: Mentos, T: Coke {
+     concoction.explode()  // make this work, but only if T conforms to both protocols, not just one
+}
+
+
+
+
+
+
+private func foo6() {
+ 
     // TODO: TO BE REVIEWED on MANNING
     func growPlant<P: Plant>(_ plant: P) {
          plant.grow()
