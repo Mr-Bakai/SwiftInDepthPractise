@@ -46,7 +46,7 @@ private func foo1() {
 
 // MARK: - 12.1.3. Multiple extensions
 /// A type is free to conform to multiple protocols.
-/// Imagine having a BikeAPI that both builds requests and handles the response.
+/// Imagine having a `BikeAPI` that both builds requests and handles the response.
 enum ResponseError: Error {
     case invalidResponse
 }
@@ -64,7 +64,13 @@ extension ResponseHandler {
 }
 
 class BikeAPI: RequestBuilder, ResponseHandler {
-     let baseURL: URL = URL(string: "https://www.biketriptracker.com")!
+    var baseUrl: URL
+    
+    init(baseUrl: URL) {
+        self.baseUrl = baseUrl
+    }
+    
+   // let baseURL: URL = URL(string: "https://www.biketriptracker.com"), TODO: to be checked, why it is not compiling tho
 }
 
 
