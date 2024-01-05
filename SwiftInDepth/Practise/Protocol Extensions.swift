@@ -174,8 +174,8 @@ private func foo3() {
     let client = SMTPClient()
     try? client.send(email: Email(subject: "Learn Swift",
                                   body: "Lorem ipsum",
-                                  to: [MailAdress(value: "john@appleseed.com")],
-                                  from: MailAdress(value: "stranger@somewhere.com")))
+                                  to: [MailAddress(value: "john@appleseed.com")],
+                                  from: MailAddress(value: "stranger@somewhere.com")))
 }
 
 
