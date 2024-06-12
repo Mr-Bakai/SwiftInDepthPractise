@@ -328,19 +328,6 @@ func mix<T>(concoction: T) where T: Mentos, T: Coke {
 
 
 
-
-private func foo6() {
- 
-    // TODO: TO BE REVIEWED on MANNING
-    func growPlant<P: Plant>(_ plant: P) {
-         plant.grow()
-    }
-    
-    growPlant(Oak()) // The mighty oak is growing
-    growPlant(CherryTree()) // Growing a tree
-    growPlant(KiwiPlant()) // Growing a plant
-}
-
 protocol Plant {
     func grow()
 }
@@ -369,7 +356,17 @@ struct CherryTree: Tree {}
 struct KiwiPlant: Plant {}
  
 
-
+private func foo6() {
+ 
+    // TODO: TO BE REVIEWED on MANNING
+    func growPlant<P: Plant>(_ plant: P) {
+         plant.grow()
+    }
+    
+    growPlant(Oak()) // The mighty oak is growing
+    growPlant(CherryTree()) // Growing a tree
+    growPlant(KiwiPlant()) // Growing a plant
+}
 
 
 
@@ -393,12 +390,12 @@ protocol AnalyticsProtocol {
     func track(event: String, parameters: [String: Any])
 }
 
-// Not like this:
-extension UIViewController: AnalyticsProtocol {
-    func track(event: String, parameters: [String: Any]) { // ... snip
-        
-    }
-}
+/// `Not like this:`
+// extension UIViewController: AnalyticsProtocol {
+//     func track(event: String, parameters: [String: Any]) { // ... snip
+//
+//     }
+// }
 
 // But as follows:
 extension AnalyticsProtocol where Self: UIViewController {
@@ -408,12 +405,14 @@ extension AnalyticsProtocol where Self: UIViewController {
 }
 
 
-extension NewsViewController: UIViewController, AnalyticsProtocol {
+class NewsViewController: UIViewController {}
+
+extension NewsViewController: AnalyticsProtocol {
     // ... snip
 
     override func viewDidAppear(_ animated: Bool) {
       super.viewDidAppear(animated)
-      track("News.appear", params: [:])
+        track(event: "News.appear", parameters: [:])
     }
 }
 

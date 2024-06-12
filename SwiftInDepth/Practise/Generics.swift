@@ -22,7 +22,7 @@ func firstLast<T>(array: [T]) -> (T, T) {
 func firstLastl<T>(array: [T]) -> (T, T) {
     
     let first: T = array[0]
-    let second: T = array[1]
+    let second: T = array[array.count - 1]
     
     return (first, second)
 }
