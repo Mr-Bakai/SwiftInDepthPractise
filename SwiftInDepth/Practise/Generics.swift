@@ -7,6 +7,15 @@
 
 import Foundation
 
+struct Notes {
+    let notes = 
+"""
+ 7.2.3. CONSTRAINING MEANS SPECIALIZING
+
+ A constrained generic becomes more specialized but is less flexible.
+"""
+}
+
 
 // Nongeneric version
 func firstLast(array: [Int]) -> (Int, Int) {
