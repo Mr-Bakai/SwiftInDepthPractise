@@ -47,7 +47,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		335A4FED2C281AE3001F2CE0 /* MapsPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MapsPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6A5141652ADE89BD00247181 /* SwiftPatterns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPatterns.swift; sourceTree = "<group>"; };
 		6A54A66A2AFDD00000BB8B1E /* Iterators Sequences .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Iterators Sequences .swift"; sourceTree = "<group>"; };
 		6AF3C36F2AF09D49006B547B /* Protocol Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protocol Extensions.swift"; sourceTree = "<group>"; };
@@ -171,7 +170,6 @@
 				6A5141652ADE89BD00247181 /* SwiftPatterns.swift */,
 				6AF3C36F2AF09D49006B547B /* Protocol Extensions.swift */,
 				6A54A66A2AFDD00000BB8B1E /* Iterators Sequences .swift */,
-				335A4FED2C281AE3001F2CE0 /* MapsPlayground.playground */,
 			);
 			path = Practise;
 			sourceTree = "<group>";

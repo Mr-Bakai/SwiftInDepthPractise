@@ -558,7 +558,7 @@ struct Article: Hashable {
 
 
 // Not like this
-extension Collection where Element: Article { /* snip...*/ }
+//extension Collection where Element: Article { /* snip...*/ }
 
 // But like this
 extension Collection where Element == Article {

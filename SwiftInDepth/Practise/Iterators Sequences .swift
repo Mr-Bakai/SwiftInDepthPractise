@@ -287,16 +287,16 @@ struct BagIterator<Element: Hashable>: IteratorProtocol {
 }
 
 
-extension Bag: Sequence {
-    func filter(_ isIncluded: (Element) throws -> Bool) rethrows -> [Element] {
-        <#code#>
-    }
-    
-    func forEach(_ body: (Element) throws -> Void) rethrows {
-        
-    }
-    
-    func makeIterator() -> BagIterator<Element> {
-        return BagIterator(store: store)
-    }
-}
+//extension Bag: Sequence {
+//    func filter(_ isIncluded: (Element) throws -> Bool) rethrows -> [Element] {
+//        <#code#>
+//    }
+//    
+//    func forEach(_ body: (Element) throws -> Void) rethrows {
+//        
+//    }
+//    
+//    func makeIterator() -> BagIterator<Element> {
+//        return BagIterator(store: store)
+//    }
+//}
