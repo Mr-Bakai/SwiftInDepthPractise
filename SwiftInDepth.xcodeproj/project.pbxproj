@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		335A4FEC2C281441001F2CE0 /* Maps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335A4FEB2C281441001F2CE0 /* Maps.swift */; };
 		6A5141662ADE89BD00247181 /* SwiftPatterns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5141652ADE89BD00247181 /* SwiftPatterns.swift */; };
 		6A54A66B2AFDD00000BB8B1E /* Iterators Sequences .swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A54A66A2AFDD00000BB8B1E /* Iterators Sequences .swift */; };
 		6AF3C3702AF09D49006B547B /* Protocol Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF3C36F2AF09D49006B547B /* Protocol Extensions.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		335A4FEB2C281441001F2CE0 /* Maps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maps.swift; sourceTree = "<group>"; };
 		6A5141652ADE89BD00247181 /* SwiftPatterns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPatterns.swift; sourceTree = "<group>"; };
 		6A54A66A2AFDD00000BB8B1E /* Iterators Sequences .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Iterators Sequences .swift"; sourceTree = "<group>"; };
 		6AF3C36F2AF09D49006B547B /* Protocol Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protocol Extensions.swift"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				6A5141652ADE89BD00247181 /* SwiftPatterns.swift */,
 				6AF3C36F2AF09D49006B547B /* Protocol Extensions.swift */,
 				6A54A66A2AFDD00000BB8B1E /* Iterators Sequences .swift */,
+				335A4FEB2C281441001F2CE0 /* Maps.swift */,
 			);
 			path = Practise;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				A9CAAC3E29E18C3700D0234C /* Revision.swift in Sources */,
 				A936FA1D29BF327900D335B1 /* Protocols.swift in Sources */,
 				A936F9D929BA1F4E00D335B1 /* ContentView.swift in Sources */,
+				335A4FEC2C281441001F2CE0 /* Maps.swift in Sources */,
 				6AF3C3702AF09D49006B547B /* Protocol Extensions.swift in Sources */,
 				6A5141662ADE89BD00247181 /* SwiftPatterns.swift in Sources */,
 				A936FA0629BDE34A00D335B1 /* Initializers.swift in Sources */,
