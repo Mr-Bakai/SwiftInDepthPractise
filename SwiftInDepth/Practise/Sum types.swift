@@ -99,4 +99,16 @@ struct Artist {
     }
 }
 
-var d = Artist(name: "Name is the same", birthDate: Date(), songsFileName: "Shape of you")
+var d = Artist(
+    name: "Name is the same",
+    birthDate: Date(),
+    songsFileName: "Shape of you"
+)
+
+// var intensePlan = LearningPlan(level: 138, description: "A special plan for today!")
+// intensePlan.contents
+// var easyPlan = intensePlan
+// easyPlan.level = 0
+//
+//  // Quiz: What does this print?
+// print(easyPlan.contents)
