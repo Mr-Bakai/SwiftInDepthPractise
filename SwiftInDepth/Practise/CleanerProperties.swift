@@ -7,6 +7,67 @@
 
 import SwiftUI
 
+func cleanerProperties3_1_2() {
+    struct Run {
+        let id: String
+        let stratDate: Date
+        var endTime: Date?
+        
+        init(
+            id: String,
+            stratDate: Date,
+            endTime: Date? = nil
+        ) {
+            self.id = id
+            self.stratDate = stratDate
+            self.endTime = endTime
+        }
+        
+        func elapsedTime() -> TimeInterval {
+            return Date().timeIntervalSince(stratDate)
+        }
+        
+        func isFinished() -> Bool {
+            return endTime != nil
+        }
+        
+        mutating func setFinished() {
+            endTime = Date()
+        }
+    }
+    
+    /// changed to computed property
+    func changeToComputedProperties() {
+        struct Run {
+            let id: String
+            let startDate: Date
+            var endDate: Date?
+            
+            init(
+                id: String,
+                startDate: Date,
+                endDate: Date? = nil
+            ) {
+                self.id = id
+                self.startDate = startDate
+                self.endDate = endDate
+            }
+            
+            var elapsedTime: TimeInterval {
+                return Date().timeIntervalSince(startDate)
+            }
+            
+            var isFinished: Bool {
+                return endDate != nil
+            }
+            
+            mutating func setFinished() {
+                endDate = Date()
+            }
+        }
+    }
+}
+
 func cleanerProperties() {
     struct LearningPlan2 {
         let level: Int
@@ -37,6 +98,7 @@ func cleanerProperties() {
 
     /// As you can see, you can bypass the algorithm by setting a lazy property,
     /// which makes the property a bit brittle.
+    ///
     var plan = LearningPlan2(
         level: 18,
         description: "A special plan for today!"
